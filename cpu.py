@@ -1,0 +1,67 @@
+import numpy as np
+import pygame as pg
+
+class chip8 ():
+    def __init__(self):
+        self.Memory = np.zeros(4096, dtype=np.uint8) #4096 bit 512 byte len 0x1000 hex
+        self.stack = np.zeros(16, dtype=np.uint16) ## 16 len 16 bits
+        self.sp = 0
+        self.pc = np.uint16(0)
+        self.V = np.zeros(16, np.uint16)
+        self.I = np.uint16(0)
+        self.input = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        self.dt = 0
+        self.st = 0
+
+
+class OP_CO ():
+    def __init__(self, chip):
+        self.x = 0
+        self.y = 0
+        self.nn = 0
+        self.n = 0
+        self.kk = 0
+        self.op_code = np.uint8(0)
+
+
+class Keys:
+    def __init__(self):
+        dicKeys = {
+            0x1: pg.K_1,
+            0x2: pg.K_2,
+            0x3: pg.K_3,
+            0x4: pg.K_q,
+            0x5: pg.K_w,
+            0x6: pg.K_e,
+            0x7: pg.K_a,
+            0x8: pg.K_s,
+            0x9: pg.K_d,
+            0x0: pg.K_x,
+            0x12: pg.K_4,
+            0x13: pg.K_r,
+            0x14: pg.K_f,
+            0x10: pg.K_z,
+            0x11: pg.K_c,
+            0x15: pg.K_v
+    }
+        
+class sprites ():
+    def __init__(self):
+        self.fontset = [
+            0xF0, 0x90, 0x90, 0x90, 0xF0, #0
+            0x20, 0x60 ,0x20, 0x20, 0x70, #1 
+            0xF0, 0x10, 0xF0, 0x80, 0xF0, #2
+            0xF0, 0x10, 0xF0, 0x10, 0xF0, #3
+            0x90, 0x90, 0xF0, 0x10, 0x10, #4
+            0xF0, 0x80, 0xF0, 0x10, 0xF0, #5
+            0xF0, 0x80, 0xF0, 0x90, 0xF0, #6
+            0xF0, 0x10, 0x20, 0x40, 0x40, #7
+            0xF0, 0x90, 0xF0, 0x90, 0xF0, #8
+            0xF0, 0x90, 0xF0, 0x10, 0xF0, #9
+            0xF0, 0x90, 0xF0, 0x90, 0x90, #A
+            0xE0, 0x90, 0xE0, 0x90, 0xE0, #B
+            0xF0, 0x80, 0x80, 0x80, 0xF0, #C
+            0xE0, 0x90, 0x90, 0x90, 0xE0, #D
+            0xF0, 0x80, 0xF0, 0x80, 0xF0, #E
+            0xF0, 0x80, 0xF0, 0x80, 0x80  #F
+        ]
